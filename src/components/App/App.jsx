@@ -22,6 +22,9 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 
+//import pages I've created
+import DeckPage from '../DeckPage/DeckPage';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -81,6 +84,14 @@ function App() {
               <LoginPage />
             }
           </Route>
+
+          <ProtectedRoute
+            // DeckPage route
+            exact
+            path="/deck"
+          >
+            <DeckPage />
+          </ProtectedRoute>
 
           <Route
             exact
