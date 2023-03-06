@@ -24,6 +24,8 @@ import './App.css';
 
 //import pages I've created
 import DeckPage from '../DeckPage/DeckPage';
+import PlayPage from '../PlayPage/PlayPage';
+import StatsPage from '../StatsPage/StatsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -91,6 +93,22 @@ function App() {
             path="/deck"
           >
             <DeckPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // PlayPage route
+            exact
+            path="/play"
+          >
+            <PlayPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // StatsPage route
+            exact
+            path="/stats"
+          >
+            <StatsPage />
           </ProtectedRoute>
 
           <Route
