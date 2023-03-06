@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // GET route code here
-    console.log('in the server GET deck!');
+    console.log('in the server GET deck router');
+    console.log('user is: ', req.user);
     let queryText = 'SELECT * FROM "deck" WHERE "user_id" = $1;';
     pool.query(queryText, [req.user.id]).then((result) => {
       console.log(result.rows);
