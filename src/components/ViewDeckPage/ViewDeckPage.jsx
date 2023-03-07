@@ -32,14 +32,14 @@ function ViewDeckPage() {
                 {deck.map(deck => {
                     return (
                         <div key={deck.id} className="thisDeck">
-                            <section className="thisDeckHeader">
+                            <section className="thisDeckHero">
                                 <h3>"{deck.hero}"</h3>
-                                <button onClick={() => history.push('/edit')}>edit</button>
-                                <button>delete</button>
                             </section>
                             <section className="thisDeckCards">
-                                {/* <p>{card.name}, {card.color}, {card.quantity}</p> */}
+                                {/* <p>{deck.card.name}, {deck.card.color}, {deck.card.quantity}</p> */}
                             </section>
+                                <button onClick={() => history.push('/edit')}>edit</button>
+                                <button>delete</button>
                         </div>
                     )
                 })}
