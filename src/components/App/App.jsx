@@ -23,7 +23,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 
 //import pages I've created
-import DeckPage from '../DeckPage/DeckPage';
+import ViewDeckPage from '../ViewDeckPage/ViewDeckPage';
+import EditDeckPage from '../EditDeckPage/EditDeckPage';
 import PlayPage from '../PlayPage/PlayPage';
 import StatsPage from '../StatsPage/StatsPage';
 
@@ -88,11 +89,19 @@ function App() {
           </Route>
 
           <ProtectedRoute
-            // DeckPage route
+            // ViewDeckPage route
             exact
             path="/deck"
           >
-            <DeckPage />
+            <ViewDeckPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // ViewDeckPage route
+            exact
+            path="/edit"
+          >
+            <EditDeckPage />
           </ProtectedRoute>
 
           <ProtectedRoute

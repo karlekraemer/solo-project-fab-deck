@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //import use history, axios
 import { useParams, useHistory } from 'react-router-dom';
-import './DeckPage.css';
+import './ViewDeckPage.css';
+import DeckForm from '../DeckForm/DeckForm';
 
-function DeckPage() {
-    
+function ViewDeckPage() {
+
     //use history const
     const history = useHistory();
     //dispatch const
@@ -13,7 +14,7 @@ function DeckPage() {
     //deck list store const
     const deck = useSelector(store => store.deck);
     const user = useSelector(store => store.user);
-    const { id } = useParams();
+    const { id } = useParams(); // for delete later
 
 
     //useEffect to FETCH_DECK on page load
@@ -25,27 +26,27 @@ function DeckPage() {
 
     return (
         <div className="container">
-           <h2>{user.username}'s Deck</h2>
+            <h2>{user.username}'s Deck</h2>
             <section className="deck-container">
 
                 {deck.map(deck => {
-                    return(
+                    return (
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHeader">
                                 <h3>"{deck.hero}"</h3>
-                                <button>edit</button>
+                                <button onClick={() => history.push('/edit')}>edit</button>
                                 <button>delete</button>
+                            </section>
+                            <section className="thisDeckCards">
+                                {/* <p>{card.name}, {card.color}, {card.quantity}</p> */}
                             </section>
                         </div>
                     )
                 })}
-
-
-
             </section>
         </div>
 
     )
 }
 
-export default DeckPage;
+export default ViewDeckPage;
