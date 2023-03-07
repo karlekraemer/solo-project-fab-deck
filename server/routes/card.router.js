@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     // GET route code here
     console.log('in the server GET card router');
     console.log('user is: ', req.user);
-    let queryText = 'SELECT * FROM "deck" JOIN "card" ON "deck"."id" = "card"."deck_id" WHERE "user_id" = $1;';
+    let queryText = 'SELECT * FROM "card" WHERE "user_id" = $1;';
     pool.query(queryText, [req.user.id]).then((result) => {
       console.log(result.rows);
       res.send(result.rows);
