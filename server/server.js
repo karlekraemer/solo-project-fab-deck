@@ -25,8 +25,10 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-//add route to deck
+//add route to deck table
 app.use('/api/deck', deckRouter);
+//add route to card rtable
+app.use('/api/card', deckRouter);
 
 // Serve static files
 app.use(express.static('build'));

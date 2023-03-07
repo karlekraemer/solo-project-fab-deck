@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 //my imports
 import deckSaga from './deck.saga';
+import cardSaga from './card.saga'
 
 
 // rootSaga is the primary saga.
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     deckSaga(),
+    cardSaga(),
   ]);
 }

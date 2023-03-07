@@ -1,7 +1,7 @@
-const deckReducer = (state = [], action) => {
-    console.log("in deck reducer", action.payload);
+const cardReducer = (state = [], action) => {
+    console.log("in card reducer", action.payload);
     switch (action.type) {
-      case 'SET_DECK':
+      case 'SET_CARD':
         return action.payload;
       default:
         return state;
@@ -10,4 +10,4 @@ const deckReducer = (state = [], action) => {
   
   // user will be on the redux state at:
   // state.user
-  export default deckReducer;
+  export default cardReducer;

@@ -14,10 +14,15 @@ function ViewDeckPage() {
     //deck list store const
     const deck = useSelector(store => store.deck);
     const user = useSelector(store => store.user);
+    const card = useSelector(store => store.card);
     const { id } = useParams(); // for delete later
 
 
     //useEffect to FETCH_DECK on page load
+    useEffect(() => {
+        dispatch({ type: 'FETCH_DECK' });
+    }, []);
+    
     useEffect(() => {
         dispatch({ type: 'FETCH_DECK' });
     }, []);
@@ -33,16 +38,17 @@ function ViewDeckPage() {
                     return (
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHero">
-                                <h3>"{deck.hero}"</h3>
+                                {/* <h3>"{deck.hero}"</h3> */}
+                                <p>{deck.name}, {deck.color}, {deck.quantity}</p>
                             </section>
-                            <section className="thisDeckCards">
-                                {/* <p>{deck.card.name}, {deck.card.color}, {deck.card.quantity}</p> */}
-                            </section>
-                                <button onClick={() => history.push('/edit')}>edit</button>
-                                <button>delete</button>
+                            {/* <section key={card.id} className="thisDeckCards">
+                                <p>{card.name}, {card.color}, {card.quantity}</p>
+                            </section> */}
                         </div>
                     )
                 })}
+                <button onClick={() => history.push('/edit')}>edit</button>
+                <button>delete</button>
             </section>
         </div>
 
