@@ -20,6 +20,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     deckSaga(),
-    cardSaga(),
+    cardSaga() //revisit?,
   ]);
 }

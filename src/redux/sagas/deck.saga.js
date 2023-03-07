@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 function* deckSaga() {
     yield takeLatest('FETCH_DECK', fetchDeck);
+    yield takeEvery('POST_DECK', postDeck);
 }
 
 function* fetchDeck() {
@@ -24,6 +25,18 @@ function* fetchDeck() {
     } catch (error) {
         console.log('User get request failed', error);
     }
+}
+
+function* postDeck(action) {
+    console.log('new deck: ', action.payload);
+    try {
+        yield axios.post('/api/deck', action.payload);
+        yield fetchDeck({ type: 'FETCH_DECK', payload: action.payload});
+    }
+    catch (error) {
+        console.log('err with postDeck', error);
+    }
+
 }
 
 export default deckSaga;

@@ -5,12 +5,14 @@ import DeckForm from '../DeckForm/DeckForm';
 
 function EditDeckPage() {
 
-
+    // const user = useSelector(store => store.user);
 
     return (
-        <section className="add-to-deck-containter">
-        <DeckForm />
-    </section>
+        <div className="container">
+            <section className="edit-deck-containter">
+                <DeckForm />
+            </section>
+        </div>
     )
 
 }

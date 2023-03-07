@@ -31,7 +31,7 @@ function ViewDeckPage() {
 
     return (
         <div className="container">
-            <h2>{user.username}'s Deck</h2>
+            <h2>{user.username}'s Pile:</h2>
             <section className="deck-container">
 
                 {deck.map(deck => {
@@ -39,11 +39,9 @@ function ViewDeckPage() {
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHero">
                                 {/* <h3>"{deck.hero}"</h3> */}
+                                    {/* this returns the hero for every card. Need to figure out how to work around that. */}
                                 <p>{deck.name}, {deck.color}, {deck.quantity}</p>
                             </section>
-                            {/* <section key={card.id} className="thisDeckCards">
-                                <p>{card.name}, {card.color}, {card.quantity}</p>
-                            </section> */}
                         </div>
                     )
                 })}

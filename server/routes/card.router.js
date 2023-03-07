@@ -1,3 +1,5 @@
+// Do I need this? SQL query in deck.router presents the correct data
+
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
