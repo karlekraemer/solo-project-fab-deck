@@ -12,7 +12,7 @@ const userRouter = require('./routes/user.router');
 //add deck table route
 const deckRouter = require('./routes/deck.router');
 //add card table route
-// const cardRouter = require('./routes/card.router');
+const cardRouter = require('./routes/card.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,7 +30,7 @@ app.use('/api/user', userRouter);
 //add route to deck table
 app.use('/api/deck', deckRouter);
 //add route to card rtable
-// app.use('/api/card', cardRouter);
+app.use('/api/card', cardRouter);
 
 // Serve static files
 app.use(express.static('build'));

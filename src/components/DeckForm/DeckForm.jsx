@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 function DeckForm() {
 
+    // const userID = useSelector(store => store.user.id);
     const [hero, setHero] = useState('');
     const [name, setName] = useState('');
         //"name" is messing me up. Consider changing to "cardName".
@@ -13,26 +14,34 @@ function DeckForm() {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const addToDeck = (event) => {
+    const addCardToDeck = (event) => {
         event.preventDefault();
-        const newDeck = {
-            hero,
+        const newCard = {
             name,
             color,
             quantity
         }
         dispatch({
-            type: 'POST_DECK',
-            payload: {newDeck}
+            type: 'POST_CARD',
+            payload: {newCard}
         });
-    } //end addToDeck
+    } //end addCardToDeck
+
+    // const saveDeck = (event) => {
+    //     event.preventDefault();
+    //     dispatch({
+    //         type: 'POST_DECK',
+    //     });
+    //     history.push('/deck');
+    // } //end saveDeck
 
     return (
-        <form className="deck-form">
+        <>
+        <form className="card-form">
         {/* <form className="deck-form" onSubmit={addToDeck}></form> */}
-            <section className="new-deck-hero">
+            {/* <section className="new-deck-hero">
                 <input value={hero} id="hero" placeholder="Hero Name" onChange={(event) => setHero(event.target.value)} />
-            </section>
+            </section> */}
             <section className="new-card-name">
                 <input value={name} id="card" placeholder="Card name" onChange={(event) => setName(event.target.value)} />
             </section>
@@ -42,9 +51,10 @@ function DeckForm() {
             <section className="new-card-quantity">
                 <input value={quantity} id="quantity" placeholder="Quantity" onChange={(event) => setQuantity(event.target.value)} />
             </section>
-            <button className="submit-button" type="submit" onClick={() => history.push('/deck')}>Sleeve Deck</button>
-            <button className="add-button" onClick={(addToDeck)}>Add</button>
+            <button className="sleeve-deck-button" onClick={() => history.push('/deck')}>Sleeve Deck</button>
+            <button className="add-button" type="submit" onClick={(addCardToDeck)}>Add</button>
         </form>
+        </>
     )
 
 }

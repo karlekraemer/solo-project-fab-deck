@@ -17,7 +17,7 @@ function* fetchDeck() {
         // If a user is logged in, this will return their information
         // from the server session (req.user)
         const response = yield axios.get('/api/deck', config);
-        console.log('get all: ', response.data);
+        console.log('get all deck: ', response.data);
         // now that the session has given us a user object
         // with an id and username set the client-side user object to let
         // the client-side code know the user is logged in

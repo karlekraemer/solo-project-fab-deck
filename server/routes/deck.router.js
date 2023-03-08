@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
     // GET route code here
     console.log('in the server GET deck router');
     console.log('user is: ', req.user);
-    // let queryText = 'SELECT * FROM "deck" WHERE "user_id" = $1;';
-    //this is the former query
+    // const userID = req.user.id;
     if (req.isAuthenticated()) {
         let queryText = `SELECT * FROM "deck" JOIN "card" ON "deck"."id" = "card"."deck_id" WHERE "user_id" = $1;`;
         pool.query(queryText, [req.user.id]).then((result) => {
@@ -27,21 +26,23 @@ router.get('/', (req, res) => {
 
 //deck POST route will go here
 router.post('/', (req, res) => {
-    const deck_id = 1;
+    // const deck_id = 1;
     // const hero = req.body.newDeck.hero;
-    const name = req.body.newDeck.name;
-    const color = req.body.newDeck.color;
-    const quantity = req.body.newDeck.quantity;
+    const user_id = req.user.id;
+    const hero = req.body.newDeck.hero;
+    // const name = req.body.newCard.name;
+    // const color = req.body.newCard.color;
+    // const quantity = req.body.newCard.quantity;
     
-    console.log('req.body', req.body);
+    console.log('hero: ', hero);
     console.log('in server POST deck for: ', req.user);
     console.log('is authenticated: ', req.isAuthenticated());
     if (req.isAuthenticated()) {
         let queryText = `
-        INSERT INTO "card" ("deck_id", "name", "color", "quantity")
-        VALUES ($1, $2, $3, $4)
+        INSERT INTO "deck" ("user_id", "hero")
+        VALUES ($1, $2)
         RETURNING "id";`
-        pool.query(queryText, [deck_id, req.body.newDeck.name, req.body.newDeck.color, req.body.newDeck.quantity])
+        pool.query(queryText, [user_id, hero])
             .then(result => {
                 console.log('New deck id: ', result.rows[0].id)
                 res.send({ id: result.rows[0].id });
