@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //import use history, axios
 import { useParams, useHistory } from 'react-router-dom';
 import './ViewDeckPage.css';
-import DeckForm from '../DeckForm/DeckForm';
+// import icons when ready to style
 
 function ViewDeckPage() {
 
@@ -34,6 +34,14 @@ function ViewDeckPage() {
     };
 
     //delete goes here
+    const deleteDeck = (deck) => {
+        dispatch({
+            type: 'DELETE_DECK',
+            payload: {
+                id: deck.id
+            }
+        })
+    };
 
     return (
         <div className="container">
@@ -44,22 +52,25 @@ function ViewDeckPage() {
                     return (
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHero">
-                                {/* <h3>"{deck.hero}"</h3> */}
+                                <h3>"{deck.hero}"</h3>
                                     {/* this returns the hero for every card. Need to figure out how to work around that. */}
+                            </section>
+                            <section className="thisDeckCards">
                                 <p>{deck.name}, {deck.color}, {deck.quantity}</p>
                             </section>
                         </div>
                     )
                 })}
-                <button onClick={() => history.push('/edit')}>edit</button>
-                <button>delete</button>
+                <button onClick={() => history.push('/edit')}>Add Cards</button>
             </section>
+            <br></br>
+                <button className="delete_button" onClick={() => deleteDeck(deck)}>Delete Deck</button>
+                <button onClick={(createNewDeck)}>New Deck</button>
             <form className="deck-form">
             <section className="new-hero-name">
                 <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />
             </section>
             </form>
-                <button onClick={(createNewDeck)}>New Deck</button>
         </div>
 
     )

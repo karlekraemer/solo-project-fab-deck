@@ -24,15 +24,13 @@ router.get('/', (req, res) => {
     }
 });
 
-//deck POST route will go here
+// will need another GET for the PUT/edits
+
+//deck POST route
 router.post('/', (req, res) => {
-    // const deck_id = 1;
-    // const hero = req.body.newDeck.hero;
+
     const user_id = req.user.id;
     const hero = req.body.newDeck.hero;
-    // const name = req.body.newCard.name;
-    // const color = req.body.newCard.color;
-    // const quantity = req.body.newCard.quantity;
     
     console.log('hero: ', hero);
     console.log('in server POST deck for: ', req.user);
@@ -56,5 +54,27 @@ router.post('/', (req, res) => {
     }
 });
 
+// DELETE deck route
+router.delete('/:id', (req, res) => {
+    console.log('req.body', req.user.id);
+    if (req.isAuthenticated()){
+        let id = req.user.id;
+        const queryText = `
+        DELETE FROM "deck"
+        WHERE id = $1;`;
+        pool
+          .query(queryText, [id])
+          .then((result) => {
+            console.log('Delete result: ', result);
+            res.sendStatus(202);
+          })
+          .catch((error) => {
+            console.log('router.delete deck error: ', error);
+            res.sendStatus(500);
+          })
+      } else {
+        res.sendStatus(403);
+      }
+    });
 
 module.exports = router;
