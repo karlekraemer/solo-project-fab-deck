@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     console.log('user is: ', req.user);
     // const userID = req.user.id;
     if (req.isAuthenticated()) {
-        let queryText = `SELECT * FROM "deck" JOIN "card" ON "deck"."id" = "card"."deck_id" WHERE "user_id" = $1;`;
+        let queryText = `SELECT * FROM "deck" JOIN "card" ON "deck"."id" = "card"."deck_id" WHERE "deck_id" = $1;`;
         pool.query(queryText, [req.user.id]).then((result) => {
             console.log(result.rows);
             res.send(result.rows);

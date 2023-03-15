@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 //card POST route will go here
 router.post('/', (req, res) => {
-  const deck_id = req.user.id;
+  const deck_id = req.deck.id;
   // console.log('here we gooooo', req.body.newDeck.id);
   // const hero = req.body.newDeck.hero;
   const name = req.body.newCard.name;
