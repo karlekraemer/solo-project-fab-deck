@@ -52,7 +52,7 @@ function ViewDeckPage() {
                     return (
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHero">
-                                <h3>"{deck.hero}"</h3>
+                                {/* <h3>"{deck.hero}"</h3> */}
                                     {/* this returns the hero for every card. Need to figure out how to work around that. */}
                             </section>
                             <section className="thisDeckCards">

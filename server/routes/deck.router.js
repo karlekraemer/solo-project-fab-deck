@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
     console.log('req.body', req.user.id);
     if (req.isAuthenticated()){
         let id = req.user.id;
-        const queryText = `
+        let queryText = `
         DELETE FROM "deck"
         WHERE id = $1;`;
         pool
