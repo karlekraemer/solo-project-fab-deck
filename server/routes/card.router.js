@@ -21,13 +21,34 @@ router.get('/', (req, res) => {
       console.log('err w get request', err);
       res.sendStatus(500);
     });
-  });
+});
+
+// thisCard GET route
+router.get('/:id', (req,res) => {
+  if (req.isAuthenticated()) {
+    console.log('get card id:', req.params.id);
+    const id = req.params.id;
+    const queryText = `
+    SELECT * FROM "card"
+    WHERE "id" = $1;`;
+    pool
+      .query(queryText, [id])
+      .then(result => {
+
+        res.send(result.rows);
+      })
+      .catch((error) => {
+        console.log('router.post deck error: ', error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 //card POST route will go here
 router.post('/', (req, res) => {
-  const deck_id = req.deck.id;
-  // console.log('here we gooooo', req.body.newDeck.id);
-  // const hero = req.body.newDeck.hero;
+  const deck_id = req.user.id; // THIS IS WEHRE THE POST ERRRORS ARE OCCURING, THE ID
   const name = req.body.newCard.name;
   const color = req.body.newCard.color;
   const quantity = req.body.newCard.quantity;
@@ -53,5 +74,38 @@ router.post('/', (req, res) => {
       res.sendStatus(403); // forbidden status code
   }
 });
+
+// card EDIT 
+router.put('/:id', (req, res) => {
+  console.log('req.body of PUT request: ', req.body, req.params.id);
+  if (req.isAuthenticated()) {
+    const id = req.params.id;
+    const queryText = `
+    UPDATE "card"
+    SET
+    "name" = $2,
+    "color" = $3,
+    "quantity" = $4,
+    WHERE "id" = $1;`;
+    pool
+      .query(queryText, [
+        id,
+        req.body.name,
+        req.body.color,
+        req.body.quantity,
+      ])
+      .then (result => {
+        console.log('result from PUT: ', result);
+        res.sendStatus(204);
+      })
+      .catch(error => {
+        console.log('error updating in router PUT: ', error);
+        res.sendStatus(500);
+      })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 
 module.exports = router;

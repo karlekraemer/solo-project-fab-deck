@@ -14,7 +14,7 @@ function ViewDeckPage() {
     //deck list store const
     const deck = useSelector(store => store.deck);
     const user = useSelector(store => store.user);
-    // const card = useSelector(store => store.card);
+    const card = useSelector(store => store.card);
     const [hero, setHero] = useState('');
 
     //useEffect to FETCH_DECK on page load
@@ -29,7 +29,7 @@ function ViewDeckPage() {
         }
         dispatch({
             type: 'POST_DECK',
-            payload: {newDeck}
+            payload: { newDeck }
         });
     };
 
@@ -43,6 +43,20 @@ function ViewDeckPage() {
         })
     };
 
+    //edit goes here
+    // be careful not to put the payload inside of an object per John
+    const handleEditCard = (deck) => {
+        console.log('in editCard const on card page');
+        dispatch({
+            type: 'SET_THIS_CARD',
+            payload: deck
+        });
+        history.push(`/edit`);
+    }
+
+    // onClick={() => handleEditIdea(idea)}
+
+
     return (
         <div className="container">
             <h2>{user.username}'s Pile:</h2>
@@ -53,23 +67,32 @@ function ViewDeckPage() {
                         <div key={deck.id} className="thisDeck">
                             <section className="thisDeckHero">
                                 {/* <h3>"{deck.hero}"</h3> */}
-                                    {/* this returns the hero for every card. Need to figure out how to work around that. */}
+                                {/* this returns the hero for every card. Need to figure out how to work around that. */}
                             </section>
                             <section className="thisDeckCards">
                                 <p>{deck.name}, {deck.color}, {deck.quantity}</p>
+                            <button onClick={() => handleEditCard(deck)}>Edit Card</button>
                             </section>
                         </div>
                     )
                 })}
-                <button onClick={() => history.push('/edit')}>Add Cards</button>
             </section>
+            <button onClick={() => history.push('/add')}>Add Cards</button>
+            {/* {card.map(card => {
+                return (
+                    <div key={card.id} className="thisCard">
+                    </div>
+                )
+            })} */}
+
             <br></br>
-                <button className="delete_button" onClick={() => deleteDeck(deck)}>Delete Deck</button>
-                <button onClick={(createNewDeck)}>New Deck</button>
             <form className="deck-form">
-            <section className="new-hero-name">
-                <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />
-            </section>
+                <button className="delete_button" onClick={() => deleteDeck(deck)}>Delete Deck</button>
+                <br></br>
+                <button onClick={(createNewDeck)}>New Deck</button>
+                <section className="new-hero-name">
+                    <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />
+                </section>
             </form>
         </div>
 

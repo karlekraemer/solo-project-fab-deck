@@ -25,6 +25,7 @@ import './App.css';
 //import pages I've created
 import ViewDeckPage from '../ViewDeckPage/ViewDeckPage';
 import EditDeckPage from '../EditDeckPage/EditDeckPage';
+import EditCardPage from '../EditCardPage/EditCardPage';
 import PlayPage from '../PlayPage/PlayPage';
 import StatsPage from '../StatsPage/StatsPage';
 
@@ -97,11 +98,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // ViewDeckPage route
+            // AddPage route
+            exact
+            path="/add"
+          >
+            <EditDeckPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // EditDeckPage route
             exact
             path="/edit"
           >
-            <EditDeckPage />
+            <EditCardPage />
           </ProtectedRoute>
 
           <ProtectedRoute

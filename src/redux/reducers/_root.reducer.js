@@ -4,6 +4,8 @@ import user from './user.reducer';
 //my imports
 import deck from './deck.reducer';
 import card from './card.reducer';
+import thisCard from './this.card.reducer';
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,7 +17,8 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   deck,
-  card
+  card,
+  thisCard
 });
 
 export default rootReducer;

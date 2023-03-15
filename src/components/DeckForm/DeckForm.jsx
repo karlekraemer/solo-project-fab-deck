@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 function DeckForm() {
 
     // const userID = useSelector(store => store.user.id);
-    const [hero, setHero] = useState('');
     const [name, setName] = useState('');
         //"name" is messing me up. Consider changing to "cardName".
     const [color, setColor] = useState('');

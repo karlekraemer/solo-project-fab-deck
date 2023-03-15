@@ -11,8 +11,7 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome to the table, {user.username}!</h2>
-      <p>Player ID: {user.id}</p>
-      <p>Deck and Stats:</p>
+      <p>Want to check your deck or play a game?</p>
       <Link to="/deck"><button className="link">My Deck</button></Link>
       <br />
       <Link to="/play"><button className="link">Play Game</button></Link>
