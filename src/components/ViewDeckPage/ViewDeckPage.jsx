@@ -56,22 +56,32 @@ function ViewDeckPage() {
 
     // onClick={() => handleEditIdea(idea)}
 
-
     return (
         <div className="container">
             <h2>{user.username}'s Pile:</h2>
+            <h2>Hero: {deck.hero}</h2>
             <section className="deck-container">
+
+                {/* {newDeck.map(newDeck => {
+                    return (
+                        <div key={newDeck.id} className="newDeckHero">
+                            <p>{newDeck.hero}</p>
+                        </div>
+                    )
+                })} */}
 
                 {deck.map(deck => {
                     return (
                         <div key={deck.id} className="thisDeck">
-                            <section className="thisDeckHero">
+                            {/* <section className="thisDeckHero"> */}
                                 {/* <h3>"{deck.hero}"</h3> */}
                                 {/* this returns the hero for every card. Need to figure out how to work around that. */}
-                            </section>
+                            {/* </section> */}
                             <section className="thisDeckCards">
-                                <p>{deck.name}, {deck.color}, {deck.quantity}</p>
-                            <button onClick={() => handleEditCard(deck)}>Edit Card</button>
+                                <p>{deck.name}, {deck.color}, {deck.quantity}
+                                <button onClick={() => handleEditCard(deck)}>Edit Card</button>
+                                <button>Delete Card</button>
+                                </p>
                             </section>
                         </div>
                     )
@@ -89,9 +99,9 @@ function ViewDeckPage() {
             <form className="deck-form">
                 <button className="delete_button" onClick={() => deleteDeck(deck)}>Delete Deck</button>
                 <br></br>
-                <button onClick={(createNewDeck)}>New Deck</button>
                 <section className="new-hero-name">
                     <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />
+                <button onClick={(createNewDeck)}>Submit New Hero</button>
                 </section>
             </form>
         </div>
