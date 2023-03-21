@@ -5,6 +5,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import './ViewDeckPage.css';
 // import icons when ready to style
 
+
 function ViewDeckPage() {
 
     //use history const
@@ -59,7 +60,7 @@ function ViewDeckPage() {
     return (
         <div className="container">
             <h2>{user.username}'s Pile:</h2>
-            <h2>Hero: {deck.hero}</h2>
+            {/* <h2>Hero: {deck.hero}</h2> */}
             <section className="deck-container">
 
                 {/* {newDeck.map(newDeck => {
@@ -78,16 +79,18 @@ function ViewDeckPage() {
                                 {/* this returns the hero for every card. Need to figure out how to work around that. */}
                             {/* </section> */}
                             <section className="thisDeckCards">
-                                <p>{deck.name}, {deck.color}, {deck.quantity}
-                                <button onClick={() => handleEditCard(deck)}>Edit Card</button>
-                                <button>Delete Card</button>
+                                <p>{deck.name}, {deck.color}, {deck.quantity} 
+                                <section className="cardBtns">
+                                    <button onClick={() => handleEditCard(deck)}>Edit</button>
+                                    <button>Delete</button>
+                                </section>
                                 </p>
                             </section>
                         </div>
                     )
                 })}
             </section>
-            <button onClick={() => history.push('/add')}>Add Cards</button>
+            <button className="btn btn_stretchedGreen" onClick={() => history.push('/add')}>Add Cards</button>
             {/* {card.map(card => {
                 return (
                     <div key={card.id} className="thisCard">
@@ -97,11 +100,11 @@ function ViewDeckPage() {
 
             <br></br>
             <form className="deck-form">
-                <button className="delete_button" onClick={() => deleteDeck(deck)}>Delete Deck</button>
+                <button className="btn btn_stretchedRed" onClick={() => deleteDeck(deck)}>Delete Deck</button>
                 <br></br>
                 <section className="new-hero-name">
                     <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />
-                <button onClick={(createNewDeck)}>Submit New Hero</button>
+                <button className="btn btn_sizeSm" onClick={(createNewDeck)}>Submit New Hero</button>
                 </section>
             </form>
         </div>

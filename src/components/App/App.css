@@ -5,8 +5,11 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0px;
+  color: #0c0704;
+  background-color: #e39023;
 }
 
 img {
@@ -33,11 +36,40 @@ Button
   border-width: 1px 1px 3px;
   border-radius: 4px;
   background-color: #00acb0;
-  color: #f8f8f8;
+  /* color: #f8f8f8; */
+  color: #493c35;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
 }
+
+.btn_stretchedGreen {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: rgba(40, 40, 40, .40);
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: #79a70d;
+  color: #282828;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  width: 100%;
+} 
+
+.btn_stretchedRed {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: rgba(40, 40, 40, .40);
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: #ca523f;
+  color: #282828;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  width: 100%;
+} 
 
 .btn_sizeMin {
   min-height: 50px;
@@ -75,6 +107,18 @@ Button
   border-color: #008183;
   color: #008183;
 }
+
+/* .btn_asLinkRed:hover {
+  background-color: transparent;
+  border-color: #a0200f;
+  color: #a0200f;
+}
+
+.btn_asLinkGreen:hover {
+  background-color: transparent;
+  border-color: #3e9a19;
+  color: #3e9a19;
+} */
 
 /* --------------------------------------------------------------------------------
 Alert

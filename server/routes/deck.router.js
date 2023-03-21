@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     const user_id = req.user.id;
-    const hero = req.deck.hero;
+    const hero = req.body.newDeck.hero;
     
     console.log('hero: ', hero);
     console.log('in server POST deck for: ', req.user);
