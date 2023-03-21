@@ -9,7 +9,7 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0px;
   color: #0c0704;
-  background-color: #e39023;
+  background-color: #6b5b54;
 }
 
 img {
@@ -35,7 +35,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #e39023;
   /* color: #f8f8f8; */
   color: #493c35;
   font-size: 1.1rem;

@@ -59,17 +59,12 @@ function ViewDeckPage() {
 
     return (
         <div className="container">
+            <div className="deckTitle">
             <h2>{user.username}'s Pile:</h2>
             {/* <h2>Hero: {deck.hero}</h2> */}
+            </div>
             <section className="deck-container">
 
-                {/* {newDeck.map(newDeck => {
-                    return (
-                        <div key={newDeck.id} className="newDeckHero">
-                            <p>{newDeck.hero}</p>
-                        </div>
-                    )
-                })} */}
 
                 {deck.map(deck => {
                     return (
@@ -81,8 +76,8 @@ function ViewDeckPage() {
                             <section className="thisDeckCards">
                                 <p>{deck.name}, {deck.color}, {deck.quantity} 
                                 <section className="cardBtns">
-                                    <button onClick={() => handleEditCard(deck)}>Edit</button>
-                                    <button>Delete</button>
+                                    <button class="editBtn" onClick={() => handleEditCard(deck)}>Edit</button>
+                                    <button class="deleteBtn">Delete</button>
                                 </section>
                                 </p>
                             </section>
@@ -90,6 +85,7 @@ function ViewDeckPage() {
                     )
                 })}
             </section>
+            <br></br>
             <button className="btn btn_stretchedGreen" onClick={() => history.push('/add')}>Add Cards</button>
             {/* {card.map(card => {
                 return (
@@ -99,8 +95,10 @@ function ViewDeckPage() {
             })} */}
 
             <br></br>
+            <br></br>
             <form className="deck-form">
                 <button className="btn btn_stretchedRed" onClick={() => deleteDeck(deck)}>Delete Deck</button>
+                <br></br>
                 <br></br>
                 <section className="new-hero-name">
                     <input value={hero} id="hero" placeholder="Hero name" onChange={(event) => setHero(event.target.value)} />

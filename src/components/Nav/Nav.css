@@ -5,8 +5,9 @@
   align-items: center;
 
   margin: 0 0 30px;
-  /* background-color: #00acb0; */
+  background-color: #e39023;
   overflow: hidden;
+  float: right;
 }
 
 .nav a {
@@ -22,15 +23,18 @@
 }
 
 .navLink {
-  display: inline-block;
+  /* display: inline-block; */
+  float: right;
   color: #f2f2f2;
   /* background-color: #00acb0; */
     /* prime default */
-  background-color: #976131;
-  text-align: center;
-  padding: 24px 10px;
+  background-color: #e39023;
+  /* text-align: center; */
+  align-items: right;
+  
+  padding: 24px 5px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
 
   /* these last two make the logout button in
   the nav bar look like another link */

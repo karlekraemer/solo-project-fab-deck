@@ -14,7 +14,8 @@ p{
 right: 10px;
 top: 5px; */
 
-.h2{
+h2{
+    text-align: center;
     display: flex;
     padding: 2px;
 } 
@@ -25,4 +26,18 @@ top: 5px; */
     /* top: 5px; */
     float: right;
     text-align: right !important;
+}
+
+.deleteBtn{
+    background-color: #ca523f;
+}
+
+.editBtn{
+    background-color: #e39023;
+}
+
+.deckTitle{
+    text-align: center;
+    position: center;
+    float: center;
 }
