@@ -3,15 +3,12 @@ import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function DeckForm() {
-
-    // const userID = useSelector(store => store.user.id);
-    const [name, setName] = useState('');
-        //"name" is messing me up. Consider changing to "cardName".
-    const [color, setColor] = useState('');
-    const [quantity, setQuantity] = useState('');
-
     const history = useHistory();
     const dispatch = useDispatch();
+    
+    const [name, setName] = useState('');
+    const [color, setColor] = useState('');
+    const [quantity, setQuantity] = useState('');
 
     const addCardToDeck = (event) => {
         event.preventDefault();

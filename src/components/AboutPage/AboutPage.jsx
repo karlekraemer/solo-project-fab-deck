@@ -11,7 +11,7 @@ function AboutPage() {
       <div>
         <p>I'd like to thank my parents and my sisters for always believing in me despite my eternal waywardness.</p>
         <br></br>
-        <p>This app was created using javascript, react, react-redux, sql, and other technologies. </p>
+        <p>This app was created using javascript, react, redux, sql, and other technologies. </p>
         <br></br>
         <p>Shouts to the entire Lydian cohort and to our instructor Casie for her wisdom which is matched only by her love for chipotle. </p>
       </div>

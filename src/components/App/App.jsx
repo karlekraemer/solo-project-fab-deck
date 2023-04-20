@@ -5,30 +5,24 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
 import './App.css';
-
-//import pages I've created
 import ViewDeckPage from '../ViewDeckPage/ViewDeckPage';
 import EditDeckPage from '../EditDeckPage/EditDeckPage';
 import EditCardPage from '../EditCardPage/EditCardPage';
 import PlayPage from '../PlayPage/PlayPage';
 import StatsPage from '../StatsPage/StatsPage';
 
+//runs fetch_user on page load and holds all Routes
 function App() {
   const dispatch = useDispatch();
 

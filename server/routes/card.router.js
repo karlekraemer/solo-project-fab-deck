@@ -1,19 +1,13 @@
-// Do I need this? SQL query in deck.router presents the correct data
-
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
 //card GET route
-
 router.get('/', (req, res) => {
     // GET route code here
     console.log('in the server GET card router');
     console.log('user is: ', req.user);
     let queryText = 'SELECT * FROM "card" WHERE "deck_id" = $1;';
-    // playing around with a join
-        // let queryText = `SELECT * FROM "card" JOIN "deck" ON "card"."id" = "deck"."user_id" WHERE "deck_id" = $1;`;
-    
     pool.query(queryText, [req.user.id]).then((result) => {
       console.log(result.rows);
       res.send(result.rows);
@@ -85,14 +79,14 @@ router.put('/:id', (req, res) => {
     SET
     "name" = $2,
     "color" = $3,
-    "quantity" = $4,
+    "quantity" = $4
     WHERE "id" = $1;`;
     pool
       .query(queryText, [
         id,
         req.body.name,
         req.body.color,
-        req.body.quantity,
+        req.body.quantity
       ])
       .then (result => {
         console.log('result from PUT: ', result);

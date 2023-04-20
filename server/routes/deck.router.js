@@ -3,12 +3,10 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //deck GET route
-
 router.get('/', (req, res) => {
     // GET route code here
     console.log('in the server GET deck router');
     console.log('user is: ', req.user);
-    // const userID = req.user.id;
     if (req.isAuthenticated()) {
         let queryText = `SELECT * FROM "deck" JOIN "card" ON "deck"."id" = "card"."deck_id" WHERE "deck_id" = $1;`;
         pool.query(queryText, [req.user.id]).then((result) => {
@@ -49,10 +47,8 @@ router.get('/', (req, res) => {
 
 //deck POST route
 router.post('/', (req, res) => {
-
     const user_id = req.user.id;
     const hero = req.body.newDeck.hero;
-    
     console.log('hero: ', hero);
     console.log('in server POST deck for: ', req.user);
     console.log('is authenticated: ', req.isAuthenticated());

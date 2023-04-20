@@ -50,7 +50,7 @@ function* postCard(action) {
 
 // EDIT card 
 function* editCard(action) {
-    console.log('card being edited: ', action.payload.id);
+    console.log('card being edited: ', action.payload.name);
     const id = action.payload.id;
     try {
       yield axios.put(`/api/card/${id}`, {
