@@ -32,7 +32,7 @@ router.get('/:id', (req,res) => {
         res.send(result.rows);
       })
       .catch((error) => {
-        console.log('router.post deck error: ', error);
+        console.log('router.get card error: ', error);
         res.sendStatus(500);
       });
   } else {
@@ -101,5 +101,40 @@ router.put('/:id', (req, res) => {
   }
 });
 
+// DELETE card route
+// router.delete('/:id', (req, res) => {
+//   console.log('req.body', req.body);
+//   if (req.isAuthenticated()){
+//       let id = req.body.id;
+//       let queryText = `
+//       DELETE FROM "card"
+//       WHERE id = $1;`;
+//       pool
+//         .query(queryText, [id])
+//         .then((result) => {
+//           console.log('Delete result: ', result);
+//           res.sendStatus(202);
+//         })
+//         .catch((error) => {
+//           console.log('router.delete card error: ', error);
+//           res.sendStatus(500);
+//         })
+//     } else {
+//       res.sendStatus(403);
+//     }
+//   });
+
+  router.delete('/:id', (req,res) => {
+    console.log(('LOOK', req.params.id))
+    const removeCard = `DELETE FROM "card" WHERE "id" = $1;`;
+    pool.query(removeCard, [req.params.id])
+    .then((result) => {
+      console.log('in remove card', result)
+      res.sendStatus(204);
+    }).catch((error) => {
+      console.log('error making query', error);
+      res.sendStatus(500);
+    })
+  })
 
 module.exports = router;

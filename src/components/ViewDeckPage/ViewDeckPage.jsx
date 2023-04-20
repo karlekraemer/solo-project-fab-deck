@@ -55,6 +55,15 @@ function ViewDeckPage() {
         history.push(`/edit`);
     }
 
+    //delete goes here
+    const deleteCard = (deck) => {
+        dispatch({
+            type: 'DELETE_CARD',
+            payload: {deck}
+        })
+    };
+
+
     // onClick={() => handleEditIdea(idea)}
 
     return (
@@ -77,7 +86,7 @@ function ViewDeckPage() {
                                 <p>{deck.name}, {deck.color}, {deck.quantity} 
                                 <section className="cardBtns">
                                     <button className="editBtn" onClick={() => handleEditCard(deck)}>Edit</button>
-                                    <button className="deleteBtn">Delete</button>
+                                    <button className="deleteBtn" onClick={() => deleteCard(deck)}>Delete</button>
                                 </section>
                                 </p>
                             </section>
