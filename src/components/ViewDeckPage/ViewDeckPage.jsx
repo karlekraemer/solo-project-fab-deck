@@ -12,7 +12,7 @@ function ViewDeckPage() {
     const history = useHistory();
     //dispatch const
     const dispatch = useDispatch();
-    //deck list store const
+    //store const
     const deck = useSelector(store => store.deck);
     const user = useSelector(store => store.user);
     const card = useSelector(store => store.card);
@@ -76,8 +76,8 @@ function ViewDeckPage() {
                             <section className="thisDeckCards">
                                 <p>{deck.name}, {deck.color}, {deck.quantity} 
                                 <section className="cardBtns">
-                                    <button class="editBtn" onClick={() => handleEditCard(deck)}>Edit</button>
-                                    <button class="deleteBtn">Delete</button>
+                                    <button className="editBtn" onClick={() => handleEditCard(deck)}>Edit</button>
+                                    <button className="deleteBtn">Delete</button>
                                 </section>
                                 </p>
                             </section>

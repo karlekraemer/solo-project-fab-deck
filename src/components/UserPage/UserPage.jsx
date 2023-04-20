@@ -18,6 +18,7 @@ function UserPage() {
       <br />
       <Link to="/stats"><button className="link">My Stats</button></Link>
       <br />
+      <br></br>
       <LogOutButton className="btn" />
     </div>
   );
