@@ -101,6 +101,25 @@ router.put('/:id', (req, res) => {
   }
 });
 
+
+
+  router.delete('/:id', (req,res) => {
+    console.log(('LOOK', req.params.id))
+    const removeCard = `DELETE FROM "card" WHERE "id" = $1;`;
+    pool.query(removeCard, [req.params.id])
+    .then((result) => {
+      console.log('in remove card', result)
+      res.sendStatus(204);
+    }).catch((error) => {
+      console.log('error making query', error);
+      res.sendStatus(500);
+    })
+  })
+
+module.exports = router;
+
+///////////////////// code that might be useful in the future ////////////////////
+
 // DELETE card route
 // router.delete('/:id', (req, res) => {
 //   console.log('req.body', req.body);
@@ -123,18 +142,3 @@ router.put('/:id', (req, res) => {
 //       res.sendStatus(403);
 //     }
 //   });
-
-  router.delete('/:id', (req,res) => {
-    console.log(('LOOK', req.params.id))
-    const removeCard = `DELETE FROM "card" WHERE "id" = $1;`;
-    pool.query(removeCard, [req.params.id])
-    .then((result) => {
-      console.log('in remove card', result)
-      res.sendStatus(204);
-    }).catch((error) => {
-      console.log('error making query', error);
-      res.sendStatus(500);
-    })
-  })
-
-module.exports = router;

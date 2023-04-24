@@ -22,6 +22,6 @@ function LoginPage() {
       </center>
     </div>
   );
-}
+} // end LoginPage
 
 export default LoginPage;

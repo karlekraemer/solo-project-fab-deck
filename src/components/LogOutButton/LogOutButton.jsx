@@ -14,6 +14,6 @@ function LogOutButton(props) {
       Log Out
     </button>
   );
-}
+} // end LogOutButton. Logs a user out of the app. 
 
 export default LogOutButton;

@@ -21,23 +21,11 @@ function DeckForm() {
             type: 'POST_CARD',
             payload: {newCard}
         });
-    } //end addCardToDeck
-
-    // const saveDeck = (event) => {
-    //     event.preventDefault();
-    //     dispatch({
-    //         type: 'POST_DECK',
-    //     });
-    //     history.push('/deck');
-    // } //end saveDeck
+    } //end addCardToDeck. Posts new card to server. 
 
     return (
         <>
         <form className="card-form">
-        {/* <form className="deck-form" onSubmit={addToDeck}></form> */}
-            {/* <section className="new-deck-hero">
-                <input value={hero} id="hero" placeholder="Hero Name" onChange={(event) => setHero(event.target.value)} />
-            </section> */}
             <section className="new-card-name">
                 <input value={name} id="card" placeholder="Card name" onChange={(event) => setName(event.target.value)} />
             </section>

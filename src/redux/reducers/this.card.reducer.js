@@ -22,6 +22,6 @@ const thisCardReducer = (state = {}, action) => {
         }
     }
         return state;
-    }
+    } //end thisCardReducer.
 
     export default thisCardReducer;

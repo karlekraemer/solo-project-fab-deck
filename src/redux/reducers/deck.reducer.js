@@ -6,7 +6,7 @@ const deckReducer = (state = [], action) => {
       default:
         return state;
     }
-  };
+  }; //end deckReducer.
   
   // user will be on the redux state at:
   // state.user

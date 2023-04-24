@@ -11,6 +11,6 @@ function PlayPage() {
         </main>
 
     ); //end deckList function
-}
+} // end PlayPage. Not currently in use but perhaps in a future iteration. 
 
 export default PlayPage;

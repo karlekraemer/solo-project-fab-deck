@@ -19,7 +19,7 @@ function EditCardPage() {
           });
 
           history.push('/deck');
-    };
+    }; //end of submitUpdate. Sends updated card info to server.  
 
     const changeName = (event) => {
         console.log('updated name: ', event.target.value);
@@ -27,7 +27,7 @@ function EditCardPage() {
             type: 'EDIT_NAME_ONCHANGE',
             payload: {property: 'name', value: event.target.value}
         });
-    }
+    } // end of changeName. Edits card name. 
 
     const changeColor = (event) => {
         console.log('updated color: ', event.target.value);
@@ -35,7 +35,7 @@ function EditCardPage() {
             type: 'EDIT_COLOR_ONCHANGE',
             payload: {property: 'color', value: event.target.value}
         });
-    }
+    } // end of changeColor. Edits card color. 
 
     const changeQuantity = (event) => {
         console.log('updated quantity: ', event.target.value);
@@ -43,7 +43,7 @@ function EditCardPage() {
             type: 'EDIT_QUANTITY_ONCHANGE',
             payload: {property: 'quantity', value: event.target.value}
         });
-    }
+    } // end of changeQuantity. Edits card quantity. 
 
     return (
         <div className="container">
@@ -60,7 +60,6 @@ function EditCardPage() {
                 <section className="new-card-quantity">
                     <input defaultValue={thisCard.quantity} id="quantity" placeholder="Quantity" onChange={(event) => changeQuantity(event)} />
                 </section>
-                {/* <button className="sleeve-deck-button" onClick={() => history.push('/deck')}>Sleeve Deck</button> */}
                 <button className="submit-button" type="submit" >Submit Changes</button>
             </form>
         </div>

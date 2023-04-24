@@ -51,6 +51,6 @@ function Nav() {
       </div>
     </div>
   );
-}
+} // end Nav. Displays navigation bar. 
 
 export default Nav;

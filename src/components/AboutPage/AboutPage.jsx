@@ -9,7 +9,6 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>I'd like to thank my parents and my sisters for always believing in me despite my eternal waywardness.</p>
         <br></br>
         <p>This app was created using javascript, react, redux, sql, and other technologies. </p>
         <br></br>

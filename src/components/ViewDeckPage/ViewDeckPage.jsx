@@ -18,10 +18,10 @@ function ViewDeckPage() {
     const card = useSelector(store => store.card);
     const [hero, setHero] = useState('');
 
-    //useEffect to FETCH_DECK on page load
     useEffect(() => {
         dispatch({ type: 'FETCH_DECK' });
-    }, []);
+    }, []); //useEffect to FETCH_DECK on page load
+
 
     const createNewDeck = (event) => {
         event.preventDefault();
@@ -32,9 +32,8 @@ function ViewDeckPage() {
             type: 'POST_DECK',
             payload: { newDeck }
         });
-    };
+    }; //end createNewDeck.
 
-    //delete goes here
     const deleteDeck = (deck) => {
         dispatch({
             type: 'DELETE_DECK',
@@ -42,10 +41,8 @@ function ViewDeckPage() {
                 id: deck.id
             }
         })
-    };
+    }; //end deleteDeck.
 
-    //edit goes here
-    // be careful not to put the payload inside of an object per John
     const handleEditCard = (deck) => {
         console.log('in editCard const on card page');
         dispatch({
@@ -53,24 +50,19 @@ function ViewDeckPage() {
             payload: deck
         });
         history.push(`/edit`);
-    }
+    } //end handleEditCard.
 
-    //delete goes here
     const deleteCard = (deck) => {
         dispatch({
             type: 'DELETE_CARD',
             payload: {deck}
         })
-    };
-
-
-    // onClick={() => handleEditIdea(idea)}
+    }; //end deleteCard.
 
     return (
         <div className="container">
             <div className="deckTitle">
             <h2>{user.username}'s Pile:</h2>
-            {/* <h2>Hero: {deck.hero}</h2> */}
             </div>
             <section className="deck-container">
 
@@ -78,10 +70,6 @@ function ViewDeckPage() {
                 {deck.map(deck => {
                     return (
                         <div key={deck.id} className="thisDeck">
-                            {/* <section className="thisDeckHero"> */}
-                                {/* <h3>"{deck.hero}"</h3> */}
-                                {/* this returns the hero for every card. Need to figure out how to work around that. */}
-                            {/* </section> */}
                             <section className="thisDeckCards">
                                 <p>{deck.name}, {deck.color}, {deck.quantity} 
                                 <section className="cardBtns">
@@ -96,13 +84,6 @@ function ViewDeckPage() {
             </section>
             <br></br>
             <button className="btn btn_stretchedGreen" onClick={() => history.push('/add')}>Add Cards</button>
-            {/* {card.map(card => {
-                return (
-                    <div key={card.id} className="thisCard">
-                    </div>
-                )
-            })} */}
-
             <br></br>
             <br></br>
             <form className="deck-form">
@@ -117,6 +98,6 @@ function ViewDeckPage() {
         </div>
 
     )
-}
+} //end ViewDeckPage.
 
 export default ViewDeckPage;

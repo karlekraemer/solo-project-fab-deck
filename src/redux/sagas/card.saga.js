@@ -10,6 +10,7 @@ function* cardSaga(props) {
 
 }
 
+// GET card
 function* fetchCard() {
     try {
         const config = {
@@ -37,7 +38,7 @@ function* fetchThisCard(action) {
     };
   };
 
-
+// POST card
 function* postCard(action) {
     console.log('new card: ', action.payload);
     try {
@@ -66,24 +67,7 @@ function* editCard(action) {
     };
   };
 
-// DELETE card saga
-// function* deleteCard(action) {
-//   console.log('card being deleted: ', action.payload);
-//   const deck = action.payload.id;
-//   try {
-//       const config = {
-//         headers: { 'Content-Type': 'application/json' },
-//         withCredentials: true,
-//       };
-//       yield axios.delete(`/api/card/${deck}`, config);
-//           //removed ${id}
-  
-//       yield put({ type: 'FETCH_CARD'});
-//     } catch (error) {
-//       console.log('Error deleting card', error);
-//     };
-// }; 
-
+// DEL card
 function* deleteCard(action) {
   console.log('action.payload inside delete item saga', action.payload);
   const deck = action.payload.deck.id;

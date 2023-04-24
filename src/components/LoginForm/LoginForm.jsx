@@ -61,6 +61,6 @@ function LoginForm() {
       </div>
     </form>
   );
-}
+} //end loginForm. Allows users log in a pre-existing profile. 
 
 export default LoginForm;

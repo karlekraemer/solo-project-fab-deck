@@ -23,6 +23,6 @@ function RegisterPage() {
       </center>
     </div>
   );
-}
+} // end RegisterPage. 
 
 export default RegisterPage;

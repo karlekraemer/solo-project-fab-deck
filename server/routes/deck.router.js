@@ -22,29 +22,6 @@ router.get('/', (req, res) => {
     }
 });
 
-// thisDeck GET route
-// router.get('/:id', (req,res) => {
-//     if (req.isAuthenticated()) {
-//       console.log('get deck id:', req.params.id);
-//       const id = req.params.id;
-//       const queryText = `
-//       SELECT * FROM "deck"
-//       WHERE "id" = $1;`;
-//       pool
-//         .query(queryText, [id])
-//         .then(result => {
-  
-//           res.send(result.rows);
-//         })
-//         .catch((error) => {
-//           console.log('router.post deck error: ', error);
-//           res.sendStatus(500);
-//         });
-//     } else {
-//       res.sendStatus(403);
-//     }
-//   });
-
 //deck POST route
 router.post('/', (req, res) => {
     const user_id = req.user.id;
@@ -70,6 +47,33 @@ router.post('/', (req, res) => {
         res.sendStatus(403); // forbidden status code
     }
 });
+
+// DELETE deck route
+router.delete('/:id', (req, res) => {
+    console.log('req.body', req.user.id);
+    if (req.isAuthenticated()){
+        let id = req.user.id;
+        let queryText = `
+        DELETE FROM "deck"
+        WHERE id = $1;`;
+        pool
+          .query(queryText, [id])
+          .then((result) => {
+            console.log('Delete result: ', result);
+            res.sendStatus(202);
+          })
+          .catch((error) => {
+            console.log('router.delete deck error: ', error);
+            res.sendStatus(500);
+          })
+      } else {
+        res.sendStatus(403);
+      }
+    });
+
+module.exports = router;
+
+///////////////////// code that might be useful in the future ////////////////////
 
 // PUT route for editing deck
 // router.put('/:id', (req, res) => {
@@ -103,27 +107,25 @@ router.post('/', (req, res) => {
 //     }
 //   });
 
-// DELETE deck route
-router.delete('/:id', (req, res) => {
-    console.log('req.body', req.user.id);
-    if (req.isAuthenticated()){
-        let id = req.user.id;
-        let queryText = `
-        DELETE FROM "deck"
-        WHERE id = $1;`;
-        pool
-          .query(queryText, [id])
-          .then((result) => {
-            console.log('Delete result: ', result);
-            res.sendStatus(202);
-          })
-          .catch((error) => {
-            console.log('router.delete deck error: ', error);
-            res.sendStatus(500);
-          })
-      } else {
-        res.sendStatus(403);
-      }
-    });
-
-module.exports = router;
+// thisDeck GET route
+// router.get('/:id', (req,res) => {
+//     if (req.isAuthenticated()) {
+//       console.log('get deck id:', req.params.id);
+//       const id = req.params.id;
+//       const queryText = `
+//       SELECT * FROM "deck"
+//       WHERE "id" = $1;`;
+//       pool
+//         .query(queryText, [id])
+//         .then(result => {
+  
+//           res.send(result.rows);
+//         })
+//         .catch((error) => {
+//           console.log('router.post deck error: ', error);
+//           res.sendStatus(500);
+//         });
+//     } else {
+//       res.sendStatus(403);
+//     }
+//   });

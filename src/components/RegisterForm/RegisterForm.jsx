@@ -56,6 +56,6 @@ function RegisterForm() {
       </div>
     </form>
   );
-}
+} // end RegisterForm. Allos user to register a profile. 
 
 export default RegisterForm;
